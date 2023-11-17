@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<head th:include="fragments/head :: head" th:remove="tag"/>
+
+		<style >
+			.disabled .fa-ban {
+				color: #ccc;
+				pointer-events: none;
+			}
+		</style>
+	</head>
+	<body>
+		<section th:include="fragments/header::header" th:remove="tag"></section>
+		<div class="container">
+				<div class="col-md-12">
+					<div class="box">
+						<table class="table table-bordered table-striped table-hover">
+							<thead>
+								<tr>
+									<td>Id</td>
+									<td>İlan Başlığı</td>
+									<td>Durum</td>
+									<td>Tarih</td>
+								</tr>
+							</thead>
+							<tbody th:if="${campaignLogList != null}">
+								<tr th:each="log : ${campaignLogList}">
+									<td th:text="${log.logId}"></td>
+									<td th:text="${log.campaignTitle}"></td>
+									<td th:text="${log.strStatus}"></td>
+									<td th:text="${log.strLogDateTime}"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+		</div>
+		<div class="row">
+			<footer th:include="fragments/footer::footer" th:remove="tag"/></footer>
+		</div>
+	</body>
+</html>

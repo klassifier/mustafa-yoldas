@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<head th:include="fragments/head :: head" th:remove="tag"/>
+
+		<style >
+			.disabled .fa-ban {
+				color: #ccc;
+				pointer-events: none;
+			}
+		</style>
+	</head>
+	<body>
+		<section th:include="fragments/header::header" th:remove="tag"></section>
+		<div class="container">
+				<div class="col-md-12" th:if="${status != null}">
+					<p class="alert " th:classappend="${status=='error' ? 'alert-danger' : 'alert-success'}" th:text="${message}"></p>
+				</div>
+				<div class="col-md-12">
+					<div class="box">
+						<table class="table table-bordered table-striped table-hover">
+							<thead>
+								<tr>
+									<td>İlan Durumu</td>
+									<td>Sayı</td>
+								</tr>
+							</thead>
+							<tbody th:if="${statisticsList != null}">
+								<tr th:each="statistic : ${statisticsList}">
+									<td th:text="${statistic.statusName}"></td>
+									<td th:text="${statistic.count}"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+		</div>
+		<div class="row">
+			<footer th:include="fragments/footer::footer" th:remove="tag"/></footer>
+		</div>
+	</body>
+</html>
